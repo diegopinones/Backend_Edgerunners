@@ -352,6 +352,24 @@
           }
         }
       },
+      "mongocsharpdriver/2.18.0": {
+        "type": "package",
+        "dependencies": {
+          "MongoDB.Bson": "2.18.0",
+          "MongoDB.Driver": "2.18.0",
+          "MongoDB.Driver.Core": "2.18.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/MongoDB.Driver.Legacy.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/MongoDB.Driver.Legacy.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "MongoDB.Bson/2.18.0": {
         "type": "package",
         "dependencies": {
@@ -406,6 +424,24 @@
         },
         "runtime": {
           "lib/netstandard2.1/MongoDB.Driver.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MongoDB.Driver.GridFS/2.18.0": {
+        "type": "package",
+        "dependencies": {
+          "MongoDB.Bson": "2.18.0",
+          "MongoDB.Driver": "2.18.0",
+          "MongoDB.Driver.Core": "2.18.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/MongoDB.Driver.GridFS.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/MongoDB.Driver.GridFS.dll": {
             "related": ".xml"
           }
         }
@@ -1139,6 +1175,25 @@
         "version.txt"
       ]
     },
+    "mongocsharpdriver/2.18.0": {
+      "sha512": "ZxxVOXFihcn7SSOtr1aNOWS/O/ZOg6G3g7IanjQT7bAnEjCc2K01+BFHQzDs4RK9HCWN4Bpn3F067QaqL37hEg==",
+      "type": "package",
+      "path": "mongocsharpdriver/2.18.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License.txt",
+        "lib/net472/MongoDB.Driver.Legacy.dll",
+        "lib/net472/MongoDB.Driver.Legacy.xml",
+        "lib/netstandard2.0/MongoDB.Driver.Legacy.dll",
+        "lib/netstandard2.0/MongoDB.Driver.Legacy.xml",
+        "lib/netstandard2.1/MongoDB.Driver.Legacy.dll",
+        "lib/netstandard2.1/MongoDB.Driver.Legacy.xml",
+        "mongocsharpdriver.2.18.0.nupkg.sha512",
+        "mongocsharpdriver.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "MongoDB.Bson/2.18.0": {
       "sha512": "iyiVjkCAZIUiyYDZXXUqISeW7n3O/qcM90PUeJybryg7g4rXhSMRY0oLpAg+NdoXD/Qm9LlmVIePAluHQB91tQ==",
       "type": "package",
@@ -1194,6 +1249,25 @@
         "lib/netstandard2.1/MongoDB.Driver.Core.xml",
         "mongodb.driver.core.2.18.0.nupkg.sha512",
         "mongodb.driver.core.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "MongoDB.Driver.GridFS/2.18.0": {
+      "sha512": "H1CG6/KysgJ/iOS3VrIDOEg1jhesLEcw58h/ov33VBBbvrg2i1MOT8sPcwrPsCpTgiVT/55yVB9FZgNPGi0r0g==",
+      "type": "package",
+      "path": "mongodb.driver.gridfs/2.18.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License.txt",
+        "lib/net472/MongoDB.Driver.GridFS.dll",
+        "lib/net472/MongoDB.Driver.GridFS.xml",
+        "lib/netstandard2.0/MongoDB.Driver.GridFS.dll",
+        "lib/netstandard2.0/MongoDB.Driver.GridFS.xml",
+        "lib/netstandard2.1/MongoDB.Driver.GridFS.dll",
+        "lib/netstandard2.1/MongoDB.Driver.GridFS.xml",
+        "mongodb.driver.gridfs.2.18.0.nupkg.sha512",
+        "mongodb.driver.gridfs.nuspec",
         "packageIcon.png"
       ]
     },
@@ -1581,7 +1655,11 @@
       "Microsoft.EntityFrameworkCore >= 7.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.0",
-      "MongoDB.Driver >= 2.18.0"
+      "MongoDB.Bson >= 2.18.0",
+      "MongoDB.Driver >= 2.18.0",
+      "MongoDB.Driver.Core >= 2.18.0",
+      "MongoDB.Driver.GridFS >= 2.18.0",
+      "mongocsharpdriver >= 2.18.0"
     ]
   },
   "packageFolders": {
@@ -1637,7 +1715,23 @@
             "target": "Package",
             "version": "[7.0.0, )"
           },
+          "MongoDB.Bson": {
+            "target": "Package",
+            "version": "[2.18.0, )"
+          },
           "MongoDB.Driver": {
+            "target": "Package",
+            "version": "[2.18.0, )"
+          },
+          "MongoDB.Driver.Core": {
+            "target": "Package",
+            "version": "[2.18.0, )"
+          },
+          "MongoDB.Driver.GridFS": {
+            "target": "Package",
+            "version": "[2.18.0, )"
+          },
+          "mongocsharpdriver": {
             "target": "Package",
             "version": "[2.18.0, )"
           }

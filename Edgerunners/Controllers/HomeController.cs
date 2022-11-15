@@ -7,16 +7,22 @@ using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Edgerunners.Models;
+using MongoDB.Driver;
+using MongoDB.Bson;
+using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.Http;
+using MongoDB.Bson.Serialization;
 
 namespace Edgerunners.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private IMongoCollection<Usuario> collectionUsuario;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IMongoClient client)
         {
-            _logger = logger;
+            var database = client.GetDatabase("app_edgerunners");
+            collectionUsuario= database.GetCollection<Usuario>("Usuario");
         }
 
         public IActionResult Index()
@@ -26,11 +32,18 @@ namespace Edgerunners.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Home(Usuario usuario)
+        public IActionResult Login(Usuario usuario)
         {
-            if (ModelState.IsValid)
+            var obj = collectionUsuario.Find(s => s.Username == usuario.Username && s.Password == usuario.Password && s.Admin == true);
+            if (obj != null)
             {
-
+                HttpContext.Session.SetString("username", usuario.Username);
+                return RedirectToAction("Home");
+            }
+            else
+            {
+                TempData["Error"] = "Usuario o contraseña equivocados";
+                return RedirectToAction("Index");
             }
         }
 
@@ -44,5 +57,13 @@ namespace Edgerunners.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        //[HttpGet]
+        //public IEnumerable<Usuario> Get()
+        //{
+        //    //var client = new MongoClient("mongodb+srv://diegopinones:edgerunners_db@clusteredgerunners.zogbhm3.mongodb.net/?retryWrites=true&w=majority");
+
+        //    return collectionUsuario.Find(s => s.Username == "admin").ToList();
+        //}
     }
 }

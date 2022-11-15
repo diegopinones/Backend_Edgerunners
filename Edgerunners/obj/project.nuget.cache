@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ctRWJPRo2Tybn8Eoz/i1nX9CLOl+RrxWUC3kqbP5EKb0MAfjhXmZWNTK8VvmdxsfMeZR+w0KKhXqAKggyyUKpg==",
+  "dgSpecHash": "TsWzq2l5upOnaTj2C2D7cpg9VTMkaGOkDMn419RdRvyQc3jc1fx560ttl8Nwri2nEU4SwCzYkjFJiysPBbsJdw==",
   "success": true,
   "projectFilePath": "/Users/diegopinones/Projects/Edgerunners/Edgerunners/Edgerunners.csproj",
   "expectedPackageFiles": [
@@ -24,9 +24,11 @@
     "/Users/diegopinones/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "/Users/diegopinones/.nuget/packages/microsoft.netcore.platforms/5.0.0/microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "/Users/diegopinones/.nuget/packages/microsoft.win32.registry/5.0.0/microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "/Users/diegopinones/.nuget/packages/mongocsharpdriver/2.18.0/mongocsharpdriver.2.18.0.nupkg.sha512",
     "/Users/diegopinones/.nuget/packages/mongodb.bson/2.18.0/mongodb.bson.2.18.0.nupkg.sha512",
     "/Users/diegopinones/.nuget/packages/mongodb.driver/2.18.0/mongodb.driver.2.18.0.nupkg.sha512",
     "/Users/diegopinones/.nuget/packages/mongodb.driver.core/2.18.0/mongodb.driver.core.2.18.0.nupkg.sha512",
+    "/Users/diegopinones/.nuget/packages/mongodb.driver.gridfs/2.18.0/mongodb.driver.gridfs.2.18.0.nupkg.sha512",
     "/Users/diegopinones/.nuget/packages/mongodb.libmongocrypt/1.6.0/mongodb.libmongocrypt.1.6.0.nupkg.sha512",
     "/Users/diegopinones/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/Users/diegopinones/.nuget/packages/sharpcompress/0.30.1/sharpcompress.0.30.1.nupkg.sha512",

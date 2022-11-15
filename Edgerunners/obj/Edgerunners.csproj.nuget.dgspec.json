@@ -54,7 +54,23 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.18.0, )"
+            },
             "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.18.0, )"
+            },
+            "MongoDB.Driver.Core": {
+              "target": "Package",
+              "version": "[2.18.0, )"
+            },
+            "MongoDB.Driver.GridFS": {
+              "target": "Package",
+              "version": "[2.18.0, )"
+            },
+            "mongocsharpdriver": {
               "target": "Package",
               "version": "[2.18.0, )"
             }
