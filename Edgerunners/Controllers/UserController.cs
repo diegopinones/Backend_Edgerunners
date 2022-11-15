@@ -31,7 +31,5 @@ namespace Edgerunners.Controllers
 
             return collectionUsuario.Find(s => s.Username == "admin").ToList();
         }
-
-        public IActionResult Home
     }
 }

@@ -49,7 +49,8 @@ namespace Edgerunners.Controllers
 
         public IActionResult Home()
         {
-            return View();
+            var lista = collectionUsuario.Find(new BsonDocument()).ToList();
+            return View(lista);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

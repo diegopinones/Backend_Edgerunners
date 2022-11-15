@@ -9,8 +9,8 @@ namespace Edgerunners.Models
 {
     public class Usuario
     {
-        [BsonId]
-        public ObjectId Id { get; set; }
+        [BsonElement("_id")]
+        public int Id { get; set; }
 
         [BsonElement("password")]
         public string Password { get; set; }
