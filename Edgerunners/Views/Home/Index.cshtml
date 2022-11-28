@@ -3,11 +3,6 @@
     Layout = null;
 }
 
-@if (ViewData["Error"] != null)
-{
-    <div class="alert-danger" role="alert">@ViewData["Error"]</div>
-}
-
 @model Usuario
 
 <head>
@@ -59,10 +54,14 @@
 
 <body class="text-center">
     <main class="form-signin w-100 m-auto">
-        <form method="post" asp-controller="Home" asp-action="Login">
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert-danger" role="alert">@TempData["Error"]</div>
+        }
+        <form method="post" asp-controller="Home" asp-action="Index">
             <h1 class="h3 mb-3 fw-normal">SIGN IN</h1>
             <div class="form-floating">
-                <input asp-for="Username" type="text" class="form-control" id="username" placeholder="Username">
+                <input type="text" class="form-control" name="user" id="user" placeholder="Email o usuario" />
             </div>
             <div class="form-floating">
                 <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Password">

@@ -61,3 +61,4 @@
 /Users/diegopinones/Projects/Edgerunners/Edgerunners/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
 /Users/diegopinones/Projects/Edgerunners/Edgerunners/bin/Debug/net6.0/MongoDB.Driver.Legacy.dll
 /Users/diegopinones/Projects/Edgerunners/Edgerunners/bin/Debug/net6.0/MongoDB.Driver.GridFS.dll
+/Users/diegopinones/Projects/Edgerunners/Edgerunners/bin/Debug/net6.0/BouncyCastle.Cryptography.dll

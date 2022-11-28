@@ -1,1 +1,101 @@
-﻿
+﻿@model IEnumerable<LeaderBoard>
+
+<head>
+    <title>Activities Page</title>
+</head>
+
+<body>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+            <h1 class="h2">Actividades</h1>
+            @if (TempData["error"] != null)
+            {
+            <div class="alert alert-warning" role="alert">@TempData["error"]</div>
+            }
+        </div>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap mb-2 align-items-center">
+            <div class="d-flex justify-content-start">
+                <form asp-controller="Home" asp-action="Actividades">
+                    <div class="input-group form-floating mr-3">
+                        <input type="text" class="form-control" placeholder="Buscar" name="SearchString">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span data-feather="filter" class="align-text-bottom"></span>
+                                Filtro
+                            </button>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item" name="typeSearch" value="email" type="submit">Email</button>
+                                <button class="dropdown-item" name="typeSearch" value="score" type="submit">Puntuación</button>
+                            </div>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-dark" name="typeSearch" value="reset" type="submit">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <button class="btn btn-primary" id="buttonSort" value="asc" onclick="change()">
+                    <span id="iconDown" data-feather="chevron-down" class="align-text-bottom" style="display: inline"></span>
+                    <span id="iconUp" data-feather="chevron-up" class="align-text-bottom" style="display: none"></span>
+                </button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table id="tabla" class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">Email</th>
+                        <th scope="col">Puntaje</th>
+                        <th scope="col">Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Email</td>
+                            <td>@user.Score</td>
+                            <td>@user.Date</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <script>
+            function change() {
+                var elem = document.getElementById("buttonSort");
+                var down = document.getElementById("iconDown");
+                var up = document.getElementById("iconUp");
+                if (elem.value == "asc") {
+                    elem.value = "des";
+                    down.style.display = "none";
+                    up.style.display = "inline";
+                    reverseTableRows("tabla");
+                } else if (elem.value == "des") {
+                    elem.value = "asc";
+                    down.style.display = "inline";
+                    up.style.display = "none";
+                    reverseTableRows("tabla");
+                }
+            }
+
+            function reverseTableRows(tableId) {
+                var table = document.getElementById(tableId),
+                    newTbody = document.createElement('tbody'),
+                    oldTbody = table.tBodies[0],
+                    rows = oldTbody.rows,
+                    i = rows.length - 1;
+
+                while (i >= 0) {
+                    newTbody.appendChild(rows[i]);
+                    i -= 1;
+                }
+                oldTbody.parentNode.replaceChild(newTbody, oldTbody);
+            }
+
+            document.getElementById("navActivity").classList.add('active');
+        </script>
+    </main>
+
+</body>

@@ -9,8 +9,7 @@ namespace Edgerunners.Models
 {
     public class Usuario
     {
-        [BsonElement("_id")]
-        public int Id { get; set; }
+        public ObjectId Id { get; set; }
 
         [BsonElement("password")]
         public string Password { get; set; }
@@ -18,20 +17,11 @@ namespace Edgerunners.Models
         [BsonElement("name")]
         public string Name { get; set; }
 
-        [BsonElement("E-mail")]
+        [BsonElement("email")]
         public string Email { get; set; }
-
-        [BsonElement("location")]
-        public string Location { get; set; }
-
-        [BsonElement("phoneNum")]
-        public string Phone { get; set; }
 
         [BsonElement("gender")]
         public string Gender { get; set; }
-
-        [BsonElement("age")]
-        public int Age { get; set; }
 
         [BsonElement("administrator")]
         public bool Admin { get; set; }

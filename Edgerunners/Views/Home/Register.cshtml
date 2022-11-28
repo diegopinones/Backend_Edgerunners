@@ -1,0 +1,89 @@
+﻿@model Usuario
+
+<head>
+    <title>Register Page</title>
+</head>
+
+<body>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Registrar nuevo usuario: </h1>
+            @if (TempData["Register"] != null)
+            {
+                <div class="alert alert-success" role="alert">@TempData["Register"]</div>
+            }
+
+        </div>
+        <form method="post" asp-controller="Home" asp-action="Register">
+            <div class="d-flex flex-row align-items-center mb-4">
+                <div data-feather="user" class="align-text-bottom m-2"></div>
+                <div class="form-floating">
+                    <input asp-for="Name" type="text" class="form-control" id="name" placeholder="Nombre" />
+                    @if (TempData["name"] != null)
+                    {
+                        <div class="alert-danger" role="alert">@TempData["name"]</div>
+                    }
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <div data-feather="user-check" class="align-text-bottom m-2"></div>
+                <div class="form-floating">
+                    <input asp-for="Username" type="text" class="form-control" id="username" placeholder="Nombre de usuario" />
+                    @if (TempData["user"] != null)
+                    {
+                        <div class="alert-danger" role="alert">@TempData["user"]</div>
+                    }
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <div data-feather="lock" class="align-text-bottom m-2"></div>
+                <div class="form-floating">
+                    <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Contraseña" />
+                </div>
+                <div class="form-floating ml-1">
+                    <input type="password" class="form-control" name="confPassword" id="confPassword" placeholder="Confirma contraseña" />
+                    @if (TempData["password"] != null)
+                    {
+                        <div class="alert-danger" role="alert">@TempData["password"]</div>
+                    }
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <div data-feather="mail" class="align-text-bottom m-2"></div>
+                <div class="form-floating">
+                    <input asp-for="Email" type="text" class="form-control" id="email" placeholder="Correo electrónico" />
+                    @if (TempData["email"] != null)
+                    {
+                        <div class="alert-danger" role="alert">@TempData["email"]</div>
+                    }
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <div data-feather="smile" class="align-text-bottom m-2"></div>
+                <div class="form-floating m-1">
+                    Género:
+                </div>
+                <div class="form-floating m-1">
+                    Hombre <input type="radio" asp-for="Gender" class="form-control" id="gender" value="H" checked />
+                </div>
+                <div class="form-floating m-1">
+                    Mujer <input type="radio" asp-for="Gender" class="form-control" id="gender" value="M" />
+                </div>
+                <div class="form-floating m-1">
+                    Otro <input type="radio" asp-for="Gender" class="form-control" id="gender" value="Otro" />
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <div data-feather="briefcase" class="m-2"></div>
+                <div class="form-floating m-1">
+                    Administrador <input type="radio" asp-for="Admin" class="form-control" id="admin" value="true" checked />
+                </div>
+                <div class="form-floating m-1">
+                    Usuario <input type="radio" asp-for="Admin" class="form-control" id="admin" value="false" />
+                </div>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" id="buttonsignin" type="submit">Registrar</button>
+        </form>
+    </main>
+    <script>document.getElementById("navRegister").classList.add('active');</script>
+</body>

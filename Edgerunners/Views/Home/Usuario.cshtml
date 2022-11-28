@@ -1,0 +1,64 @@
+﻿@model IEnumerable<LeaderBoard>
+<head>
+    <title>User Page</title>
+</head>
+
+<body>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+            <h1 class="h2">Estadísticas de usuario</h1>
+        </div>
+        <div class="container-fluid">
+            <table id="tableId">
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Email</td>
+                            <td id="colScore">@user.Score</td>
+                            <td id="colDate">@user.Date</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div>
+                <canvas id="lineChart"></canvas>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+            <script>const ctx = document.getElementById('myChart');
+
+                var score = $('#tableId #colScore').map(function () {
+                    return parseInt($(this).text())
+                });
+                var date = $('#tableId #colDate').map(function () {
+                    return $(this).text()
+                });
+
+                var ctxL = document.getElementById("lineChart").getContext('2d');
+                var myLineChart = new Chart(ctxL, {
+                    type: 'line',
+                    data: {
+                        labels: [date[0],date[1],date[2]],
+                        datasets: [{
+                            label: "Puntuaciones",
+                            data: [score[0],score[1],score[2]],
+                            backgroundColor: [
+                                'rgba(105, 0, 132, .2)',
+                            ],
+                            borderColor: [
+                                'rgba(200, 99, 132, .7)',
+                            ],
+                            borderWidth: 2
+                        }
+                        ]
+                    },
+                    options: {
+                        responsive: true
+                    }
+                });
+            </script>
+        </div>
+    </main>
+</body>

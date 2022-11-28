@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TsWzq2l5upOnaTj2C2D7cpg9VTMkaGOkDMn419RdRvyQc3jc1fx560ttl8Nwri2nEU4SwCzYkjFJiysPBbsJdw==",
+  "dgSpecHash": "lS1Fv6A4akWy8qJ0L2FEYmfGOypwvCqngsSP4mmV+MWNYg/xKxWH9YPkR5lAzOhrUJAcHH8WMbdv9IxMs8e0tw==",
   "success": true,
   "projectFilePath": "/Users/diegopinones/Projects/Edgerunners/Edgerunners/Edgerunners.csproj",
   "expectedPackageFiles": [
+    "/Users/diegopinones/.nuget/packages/bouncycastle.cryptography/2.0.0/bouncycastle.cryptography.2.0.0.nupkg.sha512",
     "/Users/diegopinones/.nuget/packages/dnsclient/1.6.1/dnsclient.1.6.1.nupkg.sha512",
     "/Users/diegopinones/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/diegopinones/.nuget/packages/microsoft.entityframeworkcore/7.0.0/microsoft.entityframeworkcore.7.0.0.nupkg.sha512",
