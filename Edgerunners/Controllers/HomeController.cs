@@ -229,8 +229,18 @@ namespace Edgerunners.Controllers
             {
                 ViewData["Sesion"] = HttpContext.Session.GetString("sesion");
                 var obj = collectionLeaderBoard.Find(s => s.Email == email).ToList();
-                var user = obj[0];
-                return View(obj);
+                try
+                {
+                    var user = obj[0];
+                    ViewData["usuario"] = user.Email;
+                    return View(obj);
+                }
+                catch(Exception e)
+                {
+                    TempData["error"] = "Usuario sin actividad.";
+                    return RedirectToAction("Home");
+                }
+                
             }
             else
             {

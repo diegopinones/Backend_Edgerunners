@@ -6,10 +6,10 @@
 <body>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
-            <h1 class="h2">Estadísticas de usuario</h1>
+            <h1 class="h2">Estadísticas de usuario: @ViewData["usuario"]</h1>
         </div>
         <div class="container-fluid">
-            <table id="tableId">
+            <table id="tableId" style="display: none">
                 <tbody>
                     @foreach (var user in Model)
                     {
@@ -24,8 +24,12 @@
             <div>
                 <canvas id="lineChart"></canvas>
             </div>
+            <div>
+                <div id="myDiv"></div>
+            </div>
 
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
 
             <script>const ctx = document.getElementById('myChart');
 
@@ -36,14 +40,24 @@
                     return $(this).text()
                 });
 
+                var scoreData = [];
+                $.each(score, function (index, item) {
+                    scoreData.push(item);
+                });
+
+                var dateData = [];
+                $.each(date, function (index, item) {
+                    dateData.push(item.toString());
+                });
+
                 var ctxL = document.getElementById("lineChart").getContext('2d');
                 var myLineChart = new Chart(ctxL, {
                     type: 'line',
                     data: {
-                        labels: [date[0],date[1],date[2]],
+                        labels: dateData,
                         datasets: [{
                             label: "Puntuaciones",
-                            data: [score[0],score[1],score[2]],
+                            data: scoreData,
                             backgroundColor: [
                                 'rgba(105, 0, 132, .2)',
                             ],
@@ -58,6 +72,31 @@
                         responsive: true
                     }
                 });
+
+                const average = scoreData.reduce((a, b) => a + b, 0) / scoreData.length;
+
+                var data = [
+                    {
+                        domain: { x: [0, 1], y: [0, 1] },
+                        value: average,
+                        title: { text: "Promedio" },
+                        type: "indicator",
+                        mode: "gauge+number+delta",
+                        delta: { reference: 10 },
+                        gauge: {
+                            axis: { range: [null, 10] },
+                            bar: {color: "black" },
+                            steps: [
+                                { range: [0, 5], color: "lightcoral" },
+                                { range: [5, 7], color: "gold" },
+                                { range: [7,10], color: "lightgreen"}
+                            ]
+                        }
+                    }
+                ];
+
+                var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
+                Plotly.newPlot('myDiv', data, layout);
             </script>
         </div>
     </main>
