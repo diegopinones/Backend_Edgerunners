@@ -30,7 +30,7 @@ namespace Edgerunners.Controllers
         public HomeController(IMongoClient client)
         {
             var database = client.GetDatabase("app_edgerunners");
-            collectionUsuario= database.GetCollection<Usuario>("Usuario");
+            collectionUsuario = database.GetCollection<Usuario>("Usuario");
             collectionLeaderBoard = database.GetCollection<LeaderBoard>("LeaderBoard");
         }
 
@@ -43,7 +43,18 @@ namespace Edgerunners.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Index(Usuario usuario, string user)
         {
-            if (user.Contains('@')){
+            if (user == null)
+            {
+                return View("Index");
+            }
+            else if (usuario.Password == null)
+            {
+                TempData["Error"] = "Usuario o contraseña equivocados";
+                return View("Index");
+            }
+
+            if (user.Contains('@'))
+            {
                 usuario.Email = user;
                 var obj = collectionUsuario.Find(s => s.Email == usuario.Email && s.Password == GetHashedText(usuario.Password)).ToList();
                 try
@@ -94,7 +105,7 @@ namespace Edgerunners.Controllers
 
         public IActionResult Dashboard()
         {
-            if(HttpContext.Session.GetString("sesion") != null)
+            if (HttpContext.Session.GetString("sesion") != null)
             {
                 ViewData["Sesion"] = HttpContext.Session.GetString("sesion");
                 return View();
@@ -103,12 +114,12 @@ namespace Edgerunners.Controllers
             {
                 return RedirectToAction("Index");
             }
-            
+
         }
 
         public IActionResult Home()
         {
-            if(HttpContext.Session.GetString("sesion") != null)
+            if (HttpContext.Session.GetString("sesion") != null)
             {
                 ViewData["Sesion"] = HttpContext.Session.GetString("sesion");
                 var lista = collectionUsuario.Find(new BsonDocument()).ToList();
@@ -123,7 +134,7 @@ namespace Edgerunners.Controllers
         [HttpPost]
         public IActionResult Home(string typeSearch, string searchString)
         {
-            if(typeSearch == "user")
+            if (typeSearch == "user")
             {
                 var obj = collectionUsuario.Find(s => s.Username == searchString).ToList();
                 try
@@ -137,7 +148,7 @@ namespace Edgerunners.Controllers
                     return RedirectToAction("Home");
                 }
             }
-            else if(typeSearch == "name")
+            else if (typeSearch == "name")
             {
                 var obj = collectionUsuario.Find(s => s.Name == searchString).ToList();
                 try
@@ -176,7 +187,7 @@ namespace Edgerunners.Controllers
             if (HttpContext.Session.GetString("sesion") != null)
             {
                 ViewData["Sesion"] = HttpContext.Session.GetString("sesion");
-                var lista = collectionLeaderBoard.Find(new BsonDocument()).ToList().OrderByDescending(s=> s.Date);
+                var lista = collectionLeaderBoard.Find(new BsonDocument()).ToList().OrderByDescending(s => s.Date);
                 return View(lista);
             }
             else
@@ -235,12 +246,12 @@ namespace Edgerunners.Controllers
                     ViewData["usuario"] = user.Email;
                     return View(obj);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     TempData["error"] = "Usuario sin actividad.";
                     return RedirectToAction("Home");
                 }
-                
+
             }
             else
             {
@@ -267,12 +278,13 @@ namespace Edgerunners.Controllers
 
             Usuario document = new Usuario();
 
-            if(usuario.Name == null)
+            if (usuario.Name == null)
             {
                 TempData["name"] = "Campo requerido";
                 return View();
 
-            }else if (usuario.Username == null)
+            }
+            else if (usuario.Username == null)
             {
                 TempData["user"] = "Campo requerido";
                 return View();
@@ -282,13 +294,13 @@ namespace Edgerunners.Controllers
                 TempData["email"] = "Campo requerido";
                 return View();
             }
-            else if(usuario.Password == null)
+            else if (usuario.Password == null)
             {
                 TempData["password"] = "Campo requerido";
                 return View();
             }
 
-            if(usuario.Password == confPassword)
+            if (usuario.Password == confPassword)
             {
                 var hash = GetHashedText(usuario.Password);
                 document.Password = hash;
@@ -339,14 +351,15 @@ namespace Edgerunners.Controllers
             {
                 TempData["edit"] = "Usuario actualizado.";
                 return RedirectToAction("Home");
-            }else if((newUserData.Username != null) && (newUserData.Password == null))
+            }
+            else if ((newUserData.Username != null) && (newUserData.Password == null))
             {
                 var updateUser = Builders<Usuario>.Update.Set("username", newUserData.Username);
                 collectionUsuario.UpdateOne(filter, updateUser);
                 TempData["edit"] = "Usuario actualizado.";
                 return RedirectToAction("Home");
             }
-            else if((newUserData.Username == null) && (newUserData.Password != null))
+            else if ((newUserData.Username == null) && (newUserData.Password != null))
             {
                 if (newUserData.Password == confPassword)
                 {
@@ -372,6 +385,7 @@ namespace Edgerunners.Controllers
                     var hash = GetHashedText(newUserData.Password);
                     var updatePassword = Builders<Usuario>.Update.Set("password", hash);
                     collectionUsuario.UpdateOne(filter, updatePassword);
+                    TempData["edit"] = "Usuario actualizado.";
                     return RedirectToAction("Home");
                 }
                 else
@@ -404,8 +418,8 @@ namespace Edgerunners.Controllers
             hash.BlockUpdate(encrypted, 0, encrypted.Length);
             byte[] compArr = new byte[hash.GetDigestSize()];
             hash.DoFinal(compArr, 0);
-            
-            return BitConverter.ToString(compArr).Replace("-","").ToLower();
+
+            return BitConverter.ToString(compArr).Replace("-", "").ToLower();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

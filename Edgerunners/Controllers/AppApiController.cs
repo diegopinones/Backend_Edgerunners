@@ -140,7 +140,13 @@ namespace Edgerunners.Controllers
 
             document.Email = actividad.Email;
             document.Score = actividad.Score;
-            document.Date = DateTime.Now;
+            //document.Date = DateTime.Now;
+
+            DateTime timeUtc = DateTime.UtcNow;
+            TimeZoneInfo cstZone = TimeZoneInfo.FindSystemTimeZoneById("Central Standard Time");
+            DateTime cstTime = TimeZoneInfo.ConvertTimeFromUtc(timeUtc, cstZone);
+            document.Date = cstTime;
+
             collectionLeaderBoard.InsertOne(document);
             return Ok();
         }
