@@ -1,18 +1,26 @@
 ﻿<Properties StartupConfiguration="{5F10A37F-38AC-4911-9FED-9BCF1BEEE0BF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Edgerunners/Controllers/AppApiController.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Edgerunners/Properties/launchSettings.json">
     <Files>
-      <File FileName="Edgerunners/Controllers/HomeController.cs" Line="413" Column="50" />
-      <File FileName="Edgerunners/Controllers/AppApiController.cs" Line="26" Column="69" />
-      <File FileName="Edgerunners/Views/Home/Actividades.cshtml" />
+      <File FileName="Edgerunners/Controllers/HomeController.cs" Line="32" Column="66" />
+      <File FileName="Edgerunners/Controllers/AppApiController.cs" Line="37" Column="27" />
+      <File FileName="Edgerunners/Views/Home/Actividades.cshtml" Line="1" Column="1" />
       <File FileName="Edgerunners/Views/Home/Usuario.cshtml" />
-      <File FileName="Edgerunners/Views/Home/Dashboard.cshtml" />
+      <File FileName="Edgerunners/Views/Home/Dashboard.cshtml" Line="1" Column="1" />
       <File FileName="Edgerunners/Views/Home/Edit.cshtml" />
       <File FileName="Edgerunners/Views/Home/Register.cshtml" />
       <File FileName="Edgerunners/Views/Home/Index.cshtml" />
-      <File FileName="Edgerunners/Models/Usuario.cs" />
-      <File FileName="Edgerunners/Models/LeaderBoard.cs" />
+      <File FileName="Edgerunners/Models/Usuario.cs" Line="1" Column="1" />
+      <File FileName="Edgerunners/Models/LeaderBoard.cs" Line="1" Column="1" />
       <File FileName="Edgerunners/Views/Shared/_Layout.cshtml" />
       <File FileName="Edgerunners/Views/Home/Home.cshtml" />
+      <File FileName="Edgerunners/Startup.cs" Line="1" Column="1" />
+      <File FileName="Edgerunners/Program.cs" Line="1" Column="1" />
+      <File FileName="Edgerunners/appsettings.json" Line="1" Column="1" />
+      <File FileName="Edgerunners/Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="Edgerunners/Views/Shared/_ValidationScriptsPartial.cshtml" Line="1" Column="1" />
+      <File FileName="Edgerunners/Views/Shared/Error.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,11 +28,11 @@
           <Node name="Edgerunners" expanded="True">
             <Node name="Edgerunners" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Controllers" expanded="True">
-                <Node name="AppApiController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="Properties" expanded="True" />
+              <Node name="Properties" expanded="True">
+                <Node name="launchSettings.json" selected="True" />
+              </Node>
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True" />
@@ -39,10 +47,8 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Edgerunners PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
